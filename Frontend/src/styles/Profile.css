@@ -1,0 +1,26 @@
+/* Profile.css */
+.profile-card {
+  width: 400px;
+  margin: 0 auto;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+.avatar-container {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.profile-details {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 4px;
+}
