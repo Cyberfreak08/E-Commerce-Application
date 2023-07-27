@@ -10,7 +10,6 @@ This is an E-Commerce Shopping Website built with React and Express, allowing us
 - [Technologies](#technologies)
 - [API Endpoints](#api-endpoints)
 - [Screenshots](#screenshots)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
