@@ -48,14 +48,14 @@ This is an E-Commerce Shopping Website built with React and Express, allowing us
 
 ## Screenshots
 
-![Login](/E-Commerce-Application/ScreenShots/Login.png)
-![Products](/E-Commerce-Application/ScreenShots/Products.png)
-![ProductModal](/E-Commerce-Application/ScreenShots/ProductModal.png)
-![Cart](/E-Commerce-Application/ScreenShots/Cart.png)
-![Checkout](/E-Commerce-Application/ScreenShots/Checkout.png)
-![Payment](/E-Commerce-Application/ScreenShots/payment.png)
-![Order Confirmation](/E-Commerce-Application/ScreenShots/ConfirmOrder.png)
-![Orders](/E-Commerce-Application/ScreenShots/Orders.png)
+![Login](/ScreenShots/Login.png)
+![Products](/ScreenShots/Products.png)
+![ProductModal](/ScreenShots/ProductModal.png)
+![Cart](/ScreenShots/Cart.png)
+![Checkout](/ScreenShots/Checkout.png)
+![Payment](/ScreenShots/payment.png)
+![Order Confirmation](/ScreenShots/ConfirmOrder.png)
+![Orders](/ScreenShots/Orders.png)
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
