@@ -1,0 +1,16 @@
+.order-confirmation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  .success-icon {
+    font-size: 100px;
+    color: #52c41a;
+    margin-bottom: 24px;
+  }
+  
+  /* Add more custom styles as needed */
+  
