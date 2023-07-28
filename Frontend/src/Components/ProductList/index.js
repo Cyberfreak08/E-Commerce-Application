@@ -4,8 +4,6 @@ import { addItemToCart, cartSelector } from "../../Redux/cartSlice";
 import {
   getProducts,
   productSelector,
-  setProductSortOrder,
-  setProductSearchKeyword,
   searchValueSelector,
   orderSelector,
   searchProducts,

@@ -26,7 +26,7 @@ const TopNavbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    loggedUser && dispatch(getCurrentUser());
+    !loggedUser && dispatch(getCurrentUser());
   }, [dispatch]);
 
   const handleMenuClick = (menuItem) => {
