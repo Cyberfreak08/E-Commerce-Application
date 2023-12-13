@@ -35,7 +35,10 @@ module.exports.getOrdersByUserId = async (req, res) => {
     const userId = req.user.id;
 
     if (userId) {
-      const order = await Order.findAll({ where: { userId } });
+      const order = await Order.findAll({
+        where: { userId },
+        order: [["date_ordered", "DESC"]],
+      });
       const items = order.reduce((acc, product) => {
         const products = JSON.parse(product?.items);
         acc.push({

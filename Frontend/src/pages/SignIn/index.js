@@ -1,37 +1,37 @@
-// SignUp.js
 import React, { useEffect } from "react";
 import { Button, Form, Input } from "antd";
-import { warning } from "../../utils/sharedService";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { signUpUser, updateSuccess } from "../../Redux/userSlice";
-import TopNavbar from "../NavBar";
-import { router } from "../../utils/routes";
 import { Link } from "react-router-dom";
-import "../../styles/SignUp.css";
-
-const SignUp = () => {
+import { signIn } from "../../Redux/userSlice";
+import { warning } from "../../utils/sharedService";
+import "../../styles/SignIn.css";
+import { router } from "../../utils/routes";
+import { useNavigate } from "react-router-dom";
+const SignIn = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const success = useSelector((state) => state?.reducer?.user?.success);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (success) {
-      navigate(router.products);
-    }
-  },[success,navigate]);
   const onFinish = (values) => {
-    dispatch(signUpUser(values));
-    dispatch(updateSuccess(true));
-
+    dispatch(signIn(values));
   };
+
   const onFinishFailed = () => {
     warning("error", "Something went wrong!");
   };
+  useEffect(() => {
+    console.log("===", success);
+    if (success) {
+    console.log('inside success',success);
+
+      navigate(router.products);
+    }
+    
+  }, [success]);
   return (
     <div>
-      <TopNavbar />
-      <div className="sign-up-form-container">
-        <h2 className="form-title">Sign Up</h2>
+
+      <div className="sign-in-form-container">
+        <h2 className="form-title">Sign In</h2>
 
         <Form
           name="basic"
@@ -52,23 +52,6 @@ const SignUp = () => {
           autoComplete="off"
         >
           <Form.Item
-            label="Username"
-            name="name"
-            rules={[
-              {
-                required: true,
-                message: "Please input your username!",
-              },
-              {
-                pattern: /^[a-zA-Z0-9_]{4,20}$/,
-                message:
-                  "Username must be 4 to 20 characters long and can only contain letters, numbers, and underscores.",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
             label="Email"
             name="email"
             rules={[
@@ -77,7 +60,7 @@ const SignUp = () => {
                 message: "Please input your email!",
               },
               {
-                pattern: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+                type: "email",
                 message: "Enter a valid email address!",
               },
             ]}
@@ -103,28 +86,23 @@ const SignUp = () => {
             <Input.Password />
           </Form.Item>
 
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">
               Submit
             </Button>
           </Form.Item>
-					<div className="d-flex flex-column align-center">
-          <p>
-            Already have an account?{" "}
-            <Link className="ml-8 m-w-500" to={router.login}>
-              Sign In
-            </Link>
-          </p>
-        </div>
+          <div className="d-flex flex-column align-center">
+            <p>
+              Don't have an account?{" "}
+              <Link className="ml-8 m-w-500" to={router.register}>
+                Sign Up
+              </Link>
+            </p>
+          </div>
         </Form>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;

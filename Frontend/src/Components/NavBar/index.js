@@ -24,9 +24,9 @@ const TopNavbar = () => {
   const dispatch = useDispatch();
   const loggedUser = useSelector((state) => state.reducer.user.loggedUser);
   const navigate = useNavigate();
-
+  // const token = useSelector((state)=>state.reducer.user.token);
   useEffect(() => {
-    loggedUser && dispatch(getCurrentUser());
+    dispatch(getCurrentUser());
   }, [dispatch]);
 
   const handleMenuClick = (menuItem) => {
@@ -40,7 +40,7 @@ const TopNavbar = () => {
         break;
       case "logout":
         dispatch(logoutUser());
-        break;
+        return navigate(router.login);
       case "profile":
         navigate(router.profile);
         break;
@@ -89,7 +89,6 @@ const TopNavbar = () => {
         <div className="user-section">
           {loggedUser?.userName ? (
             <>
-              {/* <a onClick={() => navigate(router.profile)}> */}
               <Avatar icon={<UserOutlined />} />
               Welcome,
               <span className="user-greeting">{loggedUser?.userName}</span>

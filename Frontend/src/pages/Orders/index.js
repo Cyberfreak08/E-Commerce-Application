@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Typography, Card, Space } from "antd";
 import { getAllOrders } from "../../Redux/orderSlice";
-import TopNavbar from "../NavBar";
+import TopNavbar from "../../Components/NavBar";
 const { Title, Text } = Typography;
 
 const Orders = () => {

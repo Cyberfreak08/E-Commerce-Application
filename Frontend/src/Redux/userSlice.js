@@ -57,9 +57,10 @@ export const signIn = (credentials) => {
           userName: response.user.name,
         })
       );
+      dispatch(updateSuccess(true));
       warning("User logged in successfully", "success");
     } catch (err) {
-      // warning(err.response.data.message, "error");
+      warning('Oops! Something is wrong please check your user credentials', "error");
       dispatch(updateSuccess(false));
     }
   };
@@ -79,9 +80,11 @@ export const signUpUser = (credentials) => {
           userName: response.user.name,
         })
       );
+      dispatch(updateSuccess(true));
+
       warning("User logged in successfully", "success");
     } catch (err) {
-      // warning(err.response.data.message, "error");
+      warning('Oops! Failed to Sign Up please check your user credentials', "error");
       dispatch(updateSuccess(false));
     }
   };
