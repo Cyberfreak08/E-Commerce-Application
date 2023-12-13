@@ -8,5 +8,5 @@ export const getOrderByUserIdApi = async () => {
 export const getCurrentOrderApi = async (params) => {
   const billAmount = { total: params };
   const response = await instance.post("/order/current", billAmount);
-  return response.data;
+  return response?.data;
 };

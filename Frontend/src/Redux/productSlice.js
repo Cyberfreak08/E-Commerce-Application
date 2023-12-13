@@ -38,7 +38,6 @@ export const getProducts = (searchKeyword, sortOption) => {
     const modifiedData = await getProductsApi(searchKeyword, sortOption);
     dispatch(getProductsSuccess(modifiedData));
     dispatch(setProductSearchKeyword(""));
-    // dispatch(setProductSortOrder(""));
   };
 };
 export const searchProducts = (searchKeyword, sortOption) => {
@@ -56,7 +55,6 @@ export const sortProducts = (searchKeyword, sortOption) => {
   return async (dispatch) => {
     const modifiedData = await getProductsApi(searchKeyword, sortOption);
     dispatch(getProductsSuccess(modifiedData));
-    // dispatch(setProductSearchKeyword(""));
     dispatch(setProductSortOrder(""));
   };
 };

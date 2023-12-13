@@ -6,13 +6,10 @@ module.exports.get_items = async (req, res) => {
   try {
     const { search, sortBy } = req?.query;
 
-    // Define the where condition for searching items by name
     const whereCondition = {};
     if (search) {
       whereCondition.title = { [Op.like]: `%${search}%` };
     }
-
-    // Define the order for sorting items
     const order = [];
     if (sortBy === "asc") {
       order.push(["title", "ASC"]);
@@ -23,7 +20,6 @@ module.exports.get_items = async (req, res) => {
     } else if (sortBy === "priceHighToLow") {
       order.push(["price", "DESC"]);
     } else {
-      // Default sort by date_added in descending order
       order.push(["date_added", "DESC"]);
     }
 

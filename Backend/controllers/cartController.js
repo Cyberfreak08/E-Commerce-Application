@@ -4,7 +4,6 @@ const CartItem = require("../models/Cartitems");
 const { Op } = require("sequelize");
 require("dotenv").config();
 const sequelize = require("../config/db");
-const { v4: uuidv4 } = require("uuid");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 module.exports.payment = async (req, res) => {

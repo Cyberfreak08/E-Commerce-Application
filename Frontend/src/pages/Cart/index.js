@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { QuestionCircleOutlined } from "@ant-design/icons";
-import { Button, Popconfirm, Card, Space, Typography } from "antd";
+import { Button, Typography } from "antd";
 import {
   cartSelector,
   emptyCartItems,
@@ -9,12 +8,14 @@ import {
   removeItemFromCartApi,
   updateQuantityApi,
 } from "../../Redux/cartSlice";
-import { Link, useNavigate } from "react-router-dom";
-import CheckoutModal from "../CheckoutModal";
+import { useNavigate } from "react-router-dom";
+import CheckoutModal from "../../Components/CheckoutModal";
 import "../../styles/cart.css";
 import { router } from "../../utils/routes";
-import TopNavbar from "../NavBar";
-const { Title, Text } = Typography;
+import TopNavbar from "../../Components/NavBar";
+import CartCard from "../../Components/CartCard";
+import { cartTitle, checkout } from "../../utils/constants";
+const { Title } = Typography;
 
 const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,57 +56,9 @@ const Cart = () => {
   return (
     <div>
       <TopNavbar />
+      <Title level={2}>{cartTitle}</Title>
       <div className="cart-container">
-        <Title level={2}>Cart</Title>
-        {cartItems?.length > 0 ? (
-          cartItems?.map((item) => (
-            <div key={item.id} className="cart-item-card">
-              <img
-                src={'https://media.istockphoto.com/id/619052288/photo/laptop-and-computer-parts.jpg?s=612x612&w=0&k=20&c=ejIT6Owx79tk4E3z4FxS16kWQHPHL3VDE7TQRMauMLU='}
-                className="cart-item-image"
-                alt={item?.itemName.toUpperCase().charAt(0)}
-              />
-              <div className="cart-item-details">
-                <Space direction="vertical">
-                  <Text strong>{item.itemName}</Text>
-                  <Text>Price: ₹{item.price}</Text>
-                  <Text>Quantity: {item.quantity}</Text>
-                  <Text strong className="cart-item-subtotal">
-                    Subtotal: ₹{item.price * item.quantity}
-                  </Text>
-                </Space>
-                <div className="cart-item-actions">
-                  <Button
-                    onClick={() =>
-                      handleUpdateQuantity(item.productId, item.quantity - 1)
-                    }
-                    disabled={item.quantity === 1}
-                  >
-                    Decrease Quantity
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      handleUpdateQuantity(item.productId, item.quantity + 1)
-                    }
-                  >
-                    Increase Quantity
-                  </Button>
-                  <Popconfirm
-                    title="Are you sure you want to remove this item from the cart?"
-                    icon={<QuestionCircleOutlined style={{ color: "red" }} />}
-                    okText="Yes"
-                    cancelText="No"
-                    onConfirm={() => handleRemoveItem(item.id)}
-                  >
-                    <Button danger>Delete</Button>
-                  </Popconfirm>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div>The cart is Empty</div>
-        )}
+        <CartCard />
         <div className="cart-total">
           {cartItems?.length > 0 && (
             <Title level={3}>Total: ₹{calculateTotalPrice()}</Title>
@@ -114,7 +67,7 @@ const Cart = () => {
         {cartItems?.length > 0 && (
           <div className="cart-checkout">
             <p>Taxes and shipping calculated at checkout</p>
-            <Button onClick={showModal}>Proceed to Checkout</Button>
+            <Button onClick={showModal}>{checkout}</Button>
             {isModalOpen && (
               <CheckoutModal
                 handleEmptyCart={handleEmptyCart}

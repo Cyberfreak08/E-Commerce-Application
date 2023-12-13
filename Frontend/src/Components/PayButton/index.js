@@ -1,4 +1,3 @@
-// import axios from "axios";
 import { useSelector } from "react-redux";
 import instance from "../../utils/api";
 import StripeCheckout from "react-stripe-checkout";
@@ -7,18 +6,12 @@ import { useDispatch } from "react-redux";
 import { cartSelector } from "../../Redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { router } from "../../utils/routes";
-import { useEffect } from "react";
-import { setPayment } from "../../Redux/userSlice";
 import { getCurrentOrder } from "../../Redux/orderSlice";
-
 
 const PayButton = ({ total, handleOk, handleEmptyCart }) => {
   const cartItems = useSelector(cartSelector);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(getCurrentOrder(total));
-  })
 
   const handleCheckout = async (token) => {
     try {
@@ -29,7 +22,7 @@ const PayButton = ({ total, handleOk, handleEmptyCart }) => {
       if (response.data.clientSecret) {
         handleOk();
         handleEmptyCart();
-        dispatch(setPayment(true));
+        dispatch(getCurrentOrder(total));
         navigate(`${router.payment}`);
       }
     } catch (error) {

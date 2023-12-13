@@ -81,7 +81,7 @@ export const addItemToCart = (productId, quantity) => {
       console.log(err);
       notification.success({
         message: "Error",
-        description: err.response.data.message,
+        description: 'please login to continue',
         placement: "bottomRight",
       });
     }
@@ -97,7 +97,7 @@ export const updateQuantityApi = (params) => {
       console.log(err);
       notification.success({
         message: "Error",
-        description: err.response.data.message,
+        description: 'cannot remove item from cart',
         placement: "bottomRight",
       });
     }
@@ -111,7 +111,7 @@ export const removeItemFromCartApi = (itemId) => {
     } catch (err) {
       notification.success({
         message: "Error",
-        description: err.response.data.message,
+        description: 'cannot remove item from cart',
         placement: "bottomRight",
       });
     }
@@ -126,7 +126,7 @@ export const emptyCartItems = () => {
     } catch (err) {
       notification.success({
         message: "Error",
-        description: err.response.data.message,
+        description: 'Cannot empty cart',
         placement: "bottomRight",
       });
     }

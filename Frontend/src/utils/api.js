@@ -1,9 +1,8 @@
-// import React from 'react';
 import axios from "axios";
 
 const instance = axios.create();
 
-instance.defaults.baseURL = "http://localhost:7662";
+instance.defaults.baseURL = "http://54.81.78.102:7662";
 
 instance.interceptors.request.use(
   (config) => {
@@ -24,7 +23,7 @@ instance.interceptors.response.use(
   (response) => {
     return response;
   },
-  async (error) => {
+    (error) => {
     if (error.response.status === 403) {
       localStorage.removeItem("x-auth-token");
     }

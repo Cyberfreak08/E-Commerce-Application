@@ -5,22 +5,28 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import ProductList from "./Components/ProductList";
-import Cart from "./Components/Cart";
-import SignIn from "./Components/SignIn";
-import SignUp from "./Components/SignUp";
+import ProductList from "./pages/ProductList";
+import Cart from "./pages/Cart";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import { router } from "./utils/routes";
-import useProtectedRoute from "./utils/protectedRoute";
+// import useProtectedRoute from "./utils/protectedRoute";
 import ProtectedRoute from "./utils/auth";
-import OrderConfirmation from "./Components/Orderconfirmation";
+import OrderConfirmation from "./pages/Orderconfirmation";
 import { useSelector } from "react-redux";
-import Orders from "./Components/Orders";
-import Profile from "./Components/Profile";
+import Orders from "./pages/Orders";
+import Profile from "./pages/Profile";
 const App = () => {
   const payment = useSelector((state) => state?.reducer?.user?.payment);
   const success = useSelector((state) => state?.reducer?.user?.success);
-
-  const result = useProtectedRoute();
+  const result = useSelector((state) => {
+    const tokenState = state.reducer.user.token;
+    if (tokenState === null) {
+      return localStorage.getItem("x-auth-token");
+    }
+    return tokenState
+  });
+  // const result = useProtectedRoute(token);
   return (
     <Router>
       <Routes>

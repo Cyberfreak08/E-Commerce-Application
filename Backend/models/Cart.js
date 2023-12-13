@@ -10,7 +10,8 @@ const Cart = sequelize.define(
       type: Sequelize.STRING,
       primaryKey: true,
       allowNull: false,
-      defaultValue: () => crypto.randomBytes(6).toString("hex"),
+      defaultValue: () => crypto.randomBytes(6).then((val)=>
+      val.toString("hex")),
     },
     userId: {
       type: Sequelize.STRING,
@@ -18,7 +19,7 @@ const Cart = sequelize.define(
     bill: {
       type: Sequelize.FLOAT,
     },
-  },
+  }, 
   {
     tableName: "cart",
     timestamps: true,

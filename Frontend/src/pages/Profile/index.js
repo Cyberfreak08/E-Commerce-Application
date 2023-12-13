@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
-import TopNavbar from "../NavBar";
+import TopNavbar from "../../Components/NavBar";
 import '../../styles/Profile.css';
 
 const Profile = () => {

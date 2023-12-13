@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getOrderByUserIdApi, getCurrentOrderApi } from "../apis/order.api";
+import { setPayment } from "./userSlice";
 export const ORDER_KEY = "order";
 
 const orderSlice = createSlice({
@@ -30,6 +31,7 @@ export const getAllOrders = () => {
 
 export const getCurrentOrder = (params) => {
   return async (dispatch) => {
+    dispatch(setPayment(true));
     const modifiedData = await getCurrentOrderApi(params);
     dispatch(getCurrentOrderSuccess(modifiedData));
   };
